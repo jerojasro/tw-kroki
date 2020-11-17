@@ -1,0 +1,5 @@
+{
+	"title": "$:/plugins/jerojasro/plantuml",
+	"name": "PlantUML",
+	"description": "Allows adding PlantUML diagrams, and keeps a cached, up-to-date SVG copy of the diagram"
+}
