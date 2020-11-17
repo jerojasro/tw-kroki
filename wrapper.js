@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/tiddlywiki/markdown/wrapper.js
+title: $:/plugins/jerojasro/plantuml/wrapper.js
 type: application/javascript
 module-type: parser
 
@@ -12,7 +12,7 @@ Wraps up the remarkable parser for use as a Parser in TiddlyWiki
 /*global $tw: false */
 "use strict";
 
-var r = require("$:/plugins/tiddlywiki/markdown/remarkable.js");
+var r = require("$:/plugins/jerojasro/plantuml/remarkable.js");
 
 var Remarkable = r.Remarkable,
 	linkify = r.linkify,

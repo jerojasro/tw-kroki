@@ -4,7 +4,7 @@
 			"file": "remarkable.js",
 			"fields": {
 				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/markdown/remarkable.js",
+				"title": "$:/plugins/jerojasro/plantuml/remarkable.js",
 				"module-type": "library"
 			}
 		}
