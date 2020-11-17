@@ -23,14 +23,14 @@ function parseAsBoolean(tiddlerName) {
 	return $tw.wiki.getTiddlerText(tiddlerName).toLowerCase() === "true";
 }
 var pluginOpts = {
-	linkNewWindow: parseAsBoolean("$:/config/markdown/linkNewWindow"),
-	renderWikiText: parseAsBoolean("$:/config/markdown/renderWikiText"),
-	renderWikiTextPragma: $tw.wiki.getTiddlerText("$:/config/markdown/renderWikiTextPragma").trim()
+	linkNewWindow: parseAsBoolean("$:/config/plantuml/linkNewWindow"),
+	renderWikiText: parseAsBoolean("$:/config/plantuml/renderWikiText"),
+	renderWikiTextPragma: $tw.wiki.getTiddlerText("$:/config/plantuml/renderWikiTextPragma").trim()
 };
 var remarkableOpts = {
-	breaks: parseAsBoolean("$:/config/markdown/breaks"),
-	quotes: $tw.wiki.getTiddlerText("$:/config/markdown/quotes"),
-	typographer: parseAsBoolean("$:/config/markdown/typographer")
+	breaks: parseAsBoolean("$:/config/plantuml/breaks"),
+	quotes: $tw.wiki.getTiddlerText("$:/config/plantuml/quotes"),
+	typographer: parseAsBoolean("$:/config/plantuml/typographer")
 };
 var accumulatingTypes = {
 	"text": true,
@@ -39,7 +39,7 @@ var accumulatingTypes = {
 
 var md = new Remarkable(remarkableOpts);
 
-if (parseAsBoolean("$:/config/markdown/linkify")) {
+if (parseAsBoolean("$:/config/plantuml/linkify")) {
 	md = md.use(linkify);
 }
 

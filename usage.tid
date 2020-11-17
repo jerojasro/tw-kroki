@@ -3,13 +3,13 @@ title: $:/plugins/jerojasro/plantuml/usage
 ! Plugin Configuration
 
 |!Config |!Default |!Description |
-| <code>[[breaks|$:/config/markdown/breaks]]</code>| ``false``|Remarkable library config: Convert '\n' in paragraphs into ``<br>`` |
-| <code>[[linkify|$:/config/markdown/linkify]]</code>| ``false``|Remarkable library config: Autoconvert URL-like text to links |
-| <code>[[linkNewWindow|$:/config/markdown/linkNewWindow]]</code>| ``true``|For external links, should clicking on them open a new window/tab automatically? |
-| <code>[[quotes|$:/config/markdown/quotes]]</code>| ``“”‘’``|Remarkable library config: Double + single quotes replacement pairs, when ``typographer`` enabled |
-| <code>[[renderWikiText|$:/config/markdown/renderWikiText]]</code>| ``true``|After Markdown is parsed, should any text elements be handed off to the ~WikiText parser for further processing? |
-| <code>[[renderWikiTextPragma|$:/config/markdown/renderWikiTextPragma]]</code>| ``\rules only html image macrocallinline syslink transcludeinline wikilink filteredtranscludeblock macrocallblock transcludeblock``|When handing off to the ~WikiText parser, what pragma rules should it follow? |
-| <code>[[typographer|$:/config/markdown/typographer]]</code>| ``false``|Remarkable library config: Enable some language-neutral replacement + quotes beautification |
+| <code>[[breaks|$:/config/plantuml/breaks]]</code>| ``false``|Remarkable library config: Convert '\n' in paragraphs into ``<br>`` |
+| <code>[[linkify|$:/config/plantuml/linkify]]</code>| ``false``|Remarkable library config: Autoconvert URL-like text to links |
+| <code>[[linkNewWindow|$:/config/plantuml/linkNewWindow]]</code>| ``true``|For external links, should clicking on them open a new window/tab automatically? |
+| <code>[[quotes|$:/config/plantuml/quotes]]</code>| ``“”‘’``|Remarkable library config: Double + single quotes replacement pairs, when ``typographer`` enabled |
+| <code>[[renderWikiText|$:/config/plantuml/renderWikiText]]</code>| ``true``|After Markdown is parsed, should any text elements be handed off to the ~WikiText parser for further processing? |
+| <code>[[renderWikiTextPragma|$:/config/plantuml/renderWikiTextPragma]]</code>| ``\rules only html image macrocallinline syslink transcludeinline wikilink filteredtranscludeblock macrocallblock transcludeblock``|When handing off to the ~WikiText parser, what pragma rules should it follow? |
+| <code>[[typographer|$:/config/plantuml/typographer]]</code>| ``false``|Remarkable library config: Enable some language-neutral replacement + quotes beautification |
 
 ! Creating ~WikiLinks
 
