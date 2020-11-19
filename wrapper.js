@@ -44,16 +44,9 @@ if (parseAsBoolean("$:/config/plantuml/linkify")) {
 }
 
 var MarkdownParser = function(type, text, options) {
-	var encodedDiagramText = $tw.utils.plantuml.encodePlantUML(text);
-
-	var req = new XMLHttpRequest();
-	req.open("GET", "http://172.18.62.252:8080/plantuml/svg/" + encodedDiagramText, false);
-	console.log(options);
-	console.log($tw.wiki.getTextReference("!!title"));
-	req.send(null);
-
 	//this.tree = [{"type": "raw", "html": req.responseText}];
-	this.tree = [{"type": "raw", "html": "<h1>holi</h1>"}];
+
+	this.tree = [{"type": "plantuml", "html": "<h1>holi</h1>"}];
 };
 
 exports["text/x-markdown"] = MarkdownParser;
