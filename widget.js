@@ -12,6 +12,14 @@ TODO FIXME: renders from a given field
 /*global $tw: false */
 "use strict";
 
+$tw.hooks.addHook("th-saving-tiddler", function(tiddler) {
+	if (tiddler.fields.type != "text/x-plantuml") {
+		return tiddler;
+	}
+
+	return new $tw.Tiddler(tiddler, {needs_update: "yes"});
+});
+
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 
 var PlantumlWidget = function(parseTreeNode,options) {
@@ -28,13 +36,23 @@ PlantumlWidget.prototype.render = function(parent,nextSibling) {
 	this.execute();
 
 	var ct = $tw.wiki.getTiddler(this.getVariable("currentTiddler"));
-	var encodedDiagramText = $tw.utils.plantuml.encodePlantUML(ct.fields.text);
-	var req = new XMLHttpRequest();
-	req.open("GET", "http://172.18.62.252:8080/plantuml/svg/" + encodedDiagramText, false);
-	req.send(null);
+	if (ct.fields.needs_update == "yes") {
+		var encodedDiagramText = $tw.utils.plantuml.encodePlantUML(ct.fields.text);
+		fetch(new Request("http://172.18.62.252:8080/plantuml/svg/" + encodedDiagramText))
+		.then(function(response) {return response.text();})
+		.then(function(response_text) {
+			var newTiddler = new $tw.Tiddler(
+				$tw.wiki.getTiddler(ct.fields.title),
+				{needs_update: null, cached_svg: response_text}
+			);
+			$tw.wiki.addTiddler(newTiddler);
+		});
+	}
 
 	var div = this.document.createElement("div");
-	div.innerHTML=req.responseText;
+	if (ct.fields.cached_svg) {
+		div.innerHTML=ct.fields.cached_svg;
+	}
 	parent.insertBefore(div,nextSibling);
 	this.domNodes.push(div);
 };
