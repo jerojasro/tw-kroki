@@ -35,10 +35,12 @@ PlantumlWidget.prototype.render = function(parent,nextSibling) {
 	this.parentDomNode = parent;
 	this.execute();
 
+	var server_url = $tw.wiki.getTiddler("$:/plugins/jerojasro/plantuml/config/plantuml_server_url").fields.text;
+
 	var ct = $tw.wiki.getTiddler(this.getVariable("currentTiddler"));
 	if (ct.fields.needs_update == "yes") {
 		var encodedDiagramText = $tw.utils.plantuml.encodePlantUML(ct.fields.text);
-		fetch(new Request("http://172.23.146.116:8080/plantuml/svg/" + encodedDiagramText))
+		fetch(new Request(server_url + "/plantuml/svg/" + encodedDiagramText))
 		.then(function(response) {return response.text();})
 		.then(function(response_text) {
 			var newTiddler = new $tw.Tiddler(
@@ -52,7 +54,7 @@ PlantumlWidget.prototype.render = function(parent,nextSibling) {
 	if (ct.fields["draft.of"]) {
 		var encodedDiagramText = $tw.utils.plantuml.encodePlantUML(ct.fields.text);
 		if (encodedDiagramText != ct.fields.plantuml_encoded_diagram_text) {
-			fetch(new Request("http://172.23.146.116:8080/plantuml/svg/" + encodedDiagramText))
+			fetch(new Request(server_url + "/plantuml/svg/" + encodedDiagramText))
 			.then(function(response) {return response.text();})
 			.then(function(response_text) {
 				var newTiddler = new $tw.Tiddler(
