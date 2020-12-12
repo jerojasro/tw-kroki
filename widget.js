@@ -49,6 +49,21 @@ PlantumlWidget.prototype.render = function(parent,nextSibling) {
 		});
 	}
 
+	if (ct.fields["draft.of"]) {
+		var encodedDiagramText = $tw.utils.plantuml.encodePlantUML(ct.fields.text);
+		if (encodedDiagramText != ct.fields.plantuml_encoded_diagram_text) {
+			fetch(new Request("http://172.23.146.116:8080/plantuml/svg/" + encodedDiagramText))
+			.then(function(response) {return response.text();})
+			.then(function(response_text) {
+				var newTiddler = new $tw.Tiddler(
+					$tw.wiki.getTiddler(ct.fields.title),
+					{cached_svg: response_text, plantuml_encoded_diagram_text: encodedDiagramText}
+				);
+				$tw.wiki.addTiddler(newTiddler);
+			});
+		}
+	}
+
 	var div = this.document.createElement("div");
 	if (ct.fields.cached_svg) {
 		div.innerHTML=ct.fields.cached_svg;
