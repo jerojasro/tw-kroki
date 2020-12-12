@@ -1,5 +1,7 @@
 {
 	"title": "$:/plugins/jerojasro/plantuml",
 	"name": "PlantUML",
+	"version": "1.0.0",
+	"core-version": ">=5.1.22",
 	"description": "Allows adding PlantUML diagrams, and keeps a cached, up-to-date SVG copy of the diagram"
 }
