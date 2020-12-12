@@ -38,12 +38,12 @@ PlantumlWidget.prototype.render = function(parent,nextSibling) {
 	var ct = $tw.wiki.getTiddler(this.getVariable("currentTiddler"));
 	if (ct.fields.needs_update == "yes") {
 		var encodedDiagramText = $tw.utils.plantuml.encodePlantUML(ct.fields.text);
-		fetch(new Request("http://172.18.62.252:8080/plantuml/svg/" + encodedDiagramText))
+		fetch(new Request("http://172.23.146.116:8080/plantuml/svg/" + encodedDiagramText))
 		.then(function(response) {return response.text();})
 		.then(function(response_text) {
 			var newTiddler = new $tw.Tiddler(
 				$tw.wiki.getTiddler(ct.fields.title),
-				{needs_update: null, cached_svg: response_text}
+				{plantuml_encoded_diagram_text: null, needs_update: null, cached_svg: response_text}
 			);
 			$tw.wiki.addTiddler(newTiddler);
 		});
