@@ -1,0 +1,7 @@
+title: $:/plugins/jerojasro/plantuml/config
+tags: $:/tags/ControlPanel/Toolbars
+caption: Plantuml
+
+! Plantuml server URL
+
+<$edit-text tiddler="$:/plugins/jerojasro/plantuml/config/plantuml_server_url" default="" tag="input"/>
