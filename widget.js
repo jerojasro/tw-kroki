@@ -39,27 +39,32 @@ PlantumlWidget.prototype.render = function(parent,nextSibling) {
 
 	var ct = $tw.wiki.getTiddler(this.getVariable("currentTiddler"));
 	if (ct.fields.needs_update == "yes") {
-		var encodedDiagramText = $tw.utils.plantuml.encodePlantUML(ct.fields.text);
-		fetch(new Request(server_url + "/plantuml/svg/" + encodedDiagramText))
-		.then(function(response) {return response.text();})
+		fetch(server_url + "/plantuml/svg", {
+			"method": "POST",
+			"body": ct.fields.text,
+		})
+		.then(function (response){console.log(response);return response.text()})
 		.then(function(response_text) {
 			var newTiddler = new $tw.Tiddler(
 				$tw.wiki.getTiddler(ct.fields.title),
-				{plantuml_encoded_diagram_text: null, needs_update: null, cached_svg: response_text}
+				{_prev_diag_text: null, needs_update: null, cached_svg: response_text}
 			);
 			$tw.wiki.addTiddler(newTiddler);
 		});
 	}
 
 	if (ct.fields["draft.of"]) {
-		var encodedDiagramText = $tw.utils.plantuml.encodePlantUML(ct.fields.text);
-		if (encodedDiagramText != ct.fields.plantuml_encoded_diagram_text) {
-			fetch(new Request(server_url + "/plantuml/svg/" + encodedDiagramText))
+		if (ct.fields.text != ct.fields._prev_diag_text) {
+
+			fetch(server_url + "/plantuml/svg", {
+				"method": "POST",
+				"body": ct.fields.text,
+			})
 			.then(function(response) {return response.text();})
 			.then(function(response_text) {
 				var newTiddler = new $tw.Tiddler(
 					$tw.wiki.getTiddler(ct.fields.title),
-					{cached_svg: response_text, plantuml_encoded_diagram_text: encodedDiagramText}
+					{needs_update: null, cached_svg: response_text, _prev_diag_text: ct.fields.text}
 				);
 				$tw.wiki.addTiddler(newTiddler);
 			});
