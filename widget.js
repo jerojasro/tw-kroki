@@ -28,6 +28,24 @@ var PlantumlWidget = function(parseTreeNode,options) {
 
 PlantumlWidget.prototype = new Widget();
 
+
+PlantumlWidget.prototype.updateDiagram = function(currTiddler, prevDiagText) {
+	var server_url=$tw.wiki.getTiddler("$:/plugins/jerojasro/plantuml/config/plantuml_server_url").fields.text;
+
+	fetch(server_url + "/plantuml/svg", {
+		"method": "POST",
+		"body": currTiddler.fields.text,
+	})
+	.then(function (response){return response.text()})
+	.then(function(responseText) {
+		var newTiddler = new $tw.Tiddler(
+			$tw.wiki.getTiddler(currTiddler.fields.title),
+			{_prev_diag_text: prevDiagText, needs_update: null, cached_svg: responseText}
+		);
+		$tw.wiki.addTiddler(newTiddler);
+	});
+}
+
 /*
 Render this widget into the DOM
 */
@@ -35,40 +53,11 @@ PlantumlWidget.prototype.render = function(parent,nextSibling) {
 	this.parentDomNode = parent;
 	this.execute();
 
-	var server_url = $tw.wiki.getTiddler("$:/plugins/jerojasro/plantuml/config/plantuml_server_url").fields.text;
-
-	var ct = $tw.wiki.getTiddler(this.getVariable("currentTiddler"));
+	var ct=$tw.wiki.getTiddler(this.getVariable("currentTiddler"));
 	if (ct.fields.needs_update == "yes") {
-		fetch(server_url + "/plantuml/svg", {
-			"method": "POST",
-			"body": ct.fields.text,
-		})
-		.then(function (response){console.log(response);return response.text()})
-		.then(function(response_text) {
-			var newTiddler = new $tw.Tiddler(
-				$tw.wiki.getTiddler(ct.fields.title),
-				{_prev_diag_text: null, needs_update: null, cached_svg: response_text}
-			);
-			$tw.wiki.addTiddler(newTiddler);
-		});
-	}
-
-	if (ct.fields["draft.of"]) {
-		if (ct.fields.text != ct.fields._prev_diag_text) {
-
-			fetch(server_url + "/plantuml/svg", {
-				"method": "POST",
-				"body": ct.fields.text,
-			})
-			.then(function(response) {return response.text();})
-			.then(function(response_text) {
-				var newTiddler = new $tw.Tiddler(
-					$tw.wiki.getTiddler(ct.fields.title),
-					{needs_update: null, cached_svg: response_text, _prev_diag_text: ct.fields.text}
-				);
-				$tw.wiki.addTiddler(newTiddler);
-			});
-		}
+		this.updateDiagram(ct, null);
+	} else if (ct.fields["draft.of"] && ct.fields.text != ct.fields._prev_diag_text) {
+		this.updateDiagram(ct, ct.fields.text);
 	}
 
 	var div = this.document.createElement("div");
