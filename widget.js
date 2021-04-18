@@ -12,8 +12,31 @@ TODO FIXME: renders from a given field
 /*global $tw: false */
 "use strict";
 
+var contentTypes = {
+	"text/x-plantuml":   "/plantuml/svg",
+	"text/x-pikchr":     "/pikchr/svg",
+	"text/x-graphviz":   "/graphviz/svg",
+	"text/x-blockdiag":  "/blockdiag/svg",
+	"text/x-bpmn":       "/bpmn/svg",
+	"text/x-bytefield":  "/bytefield/svg",
+	"text/x-seqdiag":    "/seqdiag/svg",
+	"text/x-actdiag":    "/actdiag/svg",
+	"text/x-nwdiag":     "/nwdiag/svg",
+	"text/x-packetdiag": "/packetdiag/svg",
+	"text/x-rackdiag":   "/rackdiag/svg",
+	"text/x-ditaa":      "/ditaa/svg",
+	"text/x-erd":        "/erd/svg",
+	"text/x-excalidraw": "/excalidraw/svg",
+	"text/x-mermaid":    "/mermaid/svg",
+	"text/x-nomnoml":    "/nomnoml/svg",
+	//"text/x-svgbob":     "/svgbob/svg",  // this diagram messed up the tiddlywiki icons, disabled for now
+	"text/x-vega":       "/vega/svg",
+	"text/x-vegalite":   "/vegalite/svg",
+	"text/x-wavedrom":   "/wavedrom/svg",
+};
+
 $tw.hooks.addHook("th-saving-tiddler", function(tiddler) {
-	if (tiddler.fields.type != "text/x-plantuml") {
+	if (!contentTypes[tiddler.fields.type]) {
 		return tiddler;
 	}
 
@@ -32,7 +55,7 @@ PlantumlWidget.prototype = new Widget();
 PlantumlWidget.prototype.updateDiagram = function(currTiddler, prevDiagText) {
 	var server_url=$tw.wiki.getTiddler("$:/plugins/jerojasro/plantuml/config/plantuml_server_url").fields.text;
 
-	fetch(server_url + "/plantuml/svg", {
+	fetch(server_url + contentTypes[currTiddler.fields.type], {
 		"method": "POST",
 		"body": currTiddler.fields.text,
 	})
