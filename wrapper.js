@@ -14,7 +14,7 @@ widget: $:/plugins/jerojasro/plantuml/widget.js
 "use strict";
 
 var PlantumlParser = function(type, text, options) {
-	this.tree = [{"type": "plantuml", "html": "<h1>holi</h1>"}];
+	this.tree = [{"type": "plantuml", "html": "<h1>placeholder</h1>"}];
 };
 
 exports["text/x-plantuml"] = PlantumlParser;
