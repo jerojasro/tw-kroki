@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/jerojasro/plantuml/widget.js
+title: $:/plugins/jerojasro/kroki/widget.js
 type: application/javascript
 module-type: widget
 
@@ -45,15 +45,15 @@ $tw.hooks.addHook("th-saving-tiddler", function(tiddler) {
 
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 
-var PlantumlWidget = function(parseTreeNode,options) {
+var KrokiWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
 
-PlantumlWidget.prototype = new Widget();
+KrokiWidget.prototype = new Widget();
 
 
-PlantumlWidget.prototype.updateDiagram = function(currTiddler, prevDiagText) {
-	var server_url=$tw.wiki.getTiddler("$:/plugins/jerojasro/plantuml/config/plantuml_server_url").fields.text;
+KrokiWidget.prototype.updateDiagram = function(currTiddler, prevDiagText) {
+	var server_url=$tw.wiki.getTiddler("$:/plugins/jerojasro/kroki/config/kroki_server_url").fields.text;
 
 	fetch(server_url + contentTypes[currTiddler.fields.type], {
 		"method": "POST",
@@ -72,7 +72,7 @@ PlantumlWidget.prototype.updateDiagram = function(currTiddler, prevDiagText) {
 /*
 Render this widget into the DOM
 */
-PlantumlWidget.prototype.render = function(parent,nextSibling) {
+KrokiWidget.prototype.render = function(parent,nextSibling) {
 	this.parentDomNode = parent;
 	this.execute();
 
@@ -91,13 +91,13 @@ PlantumlWidget.prototype.render = function(parent,nextSibling) {
 	this.domNodes.push(div);
 };
 
-PlantumlWidget.prototype.execute = function() {
+KrokiWidget.prototype.execute = function() {
 };
 
-PlantumlWidget.prototype.refresh = function(changedTiddlers) {
+KrokiWidget.prototype.refresh = function(changedTiddlers) {
 	return false;
 };
 
-exports.plantuml = PlantumlWidget;
+exports.kroki = KrokiWidget;
 
 })();

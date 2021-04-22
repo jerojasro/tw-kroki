@@ -1,10 +1,10 @@
 /*\
-title: $:/plugins/jerojasro/plantuml/wrapper.js
+title: $:/plugins/jerojasro/kroki/wrapper.js
 type: application/javascript
 module-type: parser
 
-Generates a new type of parse node, plantuml, to be processed by the plantuml
-widget: $:/plugins/jerojasro/plantuml/widget.js
+Generates a new type of parse node, kroki, to be processed by the kroki
+widget: $:/plugins/jerojasro/kroki/widget.js
 
 \*/
 (function(){
@@ -13,29 +13,29 @@ widget: $:/plugins/jerojasro/plantuml/widget.js
 /*global $tw: false */
 "use strict";
 
-var PlantumlParser = function(type, text, options) {
-	this.tree = [{"type": "plantuml", "html": "<h1>placeholder</h1>"}];
+var KrokiParser = function(type, text, options) {
+	this.tree = [{"type": "kroki", "html": "<h1>placeholder</h1>"}];
 };
 
-exports["text/x-plantuml"] = PlantumlParser;
-exports["text/x-pikchr"] = PlantumlParser;
-exports["text/x-graphviz"] = PlantumlParser;
-exports["text/x-blockdiag"] = PlantumlParser;
-exports["text/x-bpmn"] = PlantumlParser;
-exports["text/x-bytefield"] = PlantumlParser;
-exports["text/x-seqdiag"] = PlantumlParser;
-exports["text/x-actdiag"] = PlantumlParser;
-exports["text/x-nwdiag"] = PlantumlParser;
-exports["text/x-packetdiag"] = PlantumlParser;
-exports["text/x-rackdiag"] = PlantumlParser;
-exports["text/x-ditaa"] = PlantumlParser;
-exports["text/x-erd"] = PlantumlParser;
-exports["text/x-excalidraw"] = PlantumlParser;
-exports["text/x-mermaid"] = PlantumlParser;
-exports["text/x-nomnoml"] = PlantumlParser;
-//exports["text/x-svgbob"] = PlantumlParser;  // this diagram messed up the tiddlywiki icons, disabled for now
-exports["text/x-vega"] = PlantumlParser;
-exports["text/x-vegalite"] = PlantumlParser;
-exports["text/x-wavedrom"] = PlantumlParser;
+exports["text/x-plantuml"] = KrokiParser;
+exports["text/x-pikchr"] = KrokiParser;
+exports["text/x-graphviz"] = KrokiParser;
+exports["text/x-blockdiag"] = KrokiParser;
+exports["text/x-bpmn"] = KrokiParser;
+exports["text/x-bytefield"] = KrokiParser;
+exports["text/x-seqdiag"] = KrokiParser;
+exports["text/x-actdiag"] = KrokiParser;
+exports["text/x-nwdiag"] = KrokiParser;
+exports["text/x-packetdiag"] = KrokiParser;
+exports["text/x-rackdiag"] = KrokiParser;
+exports["text/x-ditaa"] = KrokiParser;
+exports["text/x-erd"] = KrokiParser;
+exports["text/x-excalidraw"] = KrokiParser;
+exports["text/x-mermaid"] = KrokiParser;
+exports["text/x-nomnoml"] = KrokiParser;
+//exports["text/x-svgbob"] = KrokiParser;  // this diagram messed up the tiddlywiki icons, disabled for now
+exports["text/x-vega"] = KrokiParser;
+exports["text/x-vegalite"] = KrokiParser;
+exports["text/x-wavedrom"] = KrokiParser;
 
 })();

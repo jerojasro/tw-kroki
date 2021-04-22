@@ -1,7 +1,7 @@
-title: $:/plugins/jerojasro/plantuml/config
+title: $:/plugins/jerojasro/kroki/config
 tags: $:/tags/ControlPanel/Toolbars
-caption: Plantuml
+caption: Kroki
 
-! Plantuml server URL
+! Kroki server URL
 
-<$edit-text tiddler="$:/plugins/jerojasro/plantuml/config/plantuml_server_url" default="" tag="input"/>
+<$edit-text tiddler="$:/plugins/jerojasro/kroki/config/kroki_server_url" default="" tag="input"/>

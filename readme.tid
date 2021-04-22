@@ -1,7 +1,15 @@
-title: $:/plugins/jerojasro/plantuml/readme
+title: $:/plugins/jerojasro/kroki/readme
 
-This is a TiddlyWiki plugin for parsing Markdown text, using the [[Remarkable|https://github.com/jonschlinkert/remarkable]] library.
+This is a TiddlyWiki plugin that integrates the Kroki diagram web service into
+TiddlyWiki, allowing you to write diagrams as text tiddlers in suitable formats
+such as [[graphviz|https://graphviz.org/]] or
+[[plantuml|https://plantuml.com/]], and have them rendered as SVG images in your
+Tiddlywiki.
 
-It is completely self-contained, and doesn't need an Internet connection in order to work. It works both in the browser and under Node.js.
-
-[[Source code|https://github.com/Jermolene/TiddlyWiki5/blob/master/plugins/jerojasro/plantuml]]
+While the plugin requires access to a Kroki instance for //creating// and
+//editing// diagrams, it doesn't require that for //showing// the diagrams; this
+is because the plugin takes care of storing the SVG data in each diagram
+tiddler. From TiddlyWiki's point of view, they are just SVG images and
+therefore, for visualizing the contents of your TiddlyWiki, you can rest assured
+that everything in it is self contained, without relying on external files or
+services.
