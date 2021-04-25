@@ -1,6 +1,6 @@
 title: $:/language/Docs/Types/text/x-wavedrom
-description: Wavedrom diagram
+description: WaveDrom diagram
 name: text/x-wavedrom
-buttonText: Wavedrom
+buttonText: WaveDrom
 tags: $:/plugins/jerojasro/kroki/diagram-type
 group: Text

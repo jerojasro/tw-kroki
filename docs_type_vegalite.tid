@@ -1,6 +1,6 @@
 title: $:/language/Docs/Types/text/x-vegalite
-description: Vegalite diagram
+description: Vega-Lite diagram
 name: text/x-vegalite
-buttonText: Vegalite
+buttonText: Vega-Lite
 tags: $:/plugins/jerojasro/kroki/diagram-type
 group: Text
