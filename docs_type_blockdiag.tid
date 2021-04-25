@@ -3,4 +3,5 @@ description: BlockDiag diagram
 name: text/x-blockdiag
 buttonText: BlockDiag
 tags: $:/plugins/jerojasro/kroki/diagram-type
+list-after: $:/language/Docs/Types/text/x-actdiag
 group: Text

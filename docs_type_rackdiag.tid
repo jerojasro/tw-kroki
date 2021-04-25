@@ -3,4 +3,5 @@ description: RackDiag diagram
 name: text/x-rackdiag
 buttonText: RackDiag
 tags: $:/plugins/jerojasro/kroki/diagram-type
+list-after: $:/language/Docs/Types/text/x-packetdiag
 group: Text

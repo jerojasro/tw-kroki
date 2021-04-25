@@ -3,4 +3,5 @@ description: NwDiag diagram
 name: text/x-nwdiag
 buttonText: NwDiag
 tags: $:/plugins/jerojasro/kroki/diagram-type
+list-after: $:/language/Docs/Types/text/x-blockdiag
 group: Text
