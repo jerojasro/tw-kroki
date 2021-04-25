@@ -1,0 +1,6 @@
+title: $:/language/Docs/Types/text/x-mermaid
+description: Mermaid diagram
+name: text/x-mermaid
+buttonText: Mermaid
+tags: $:/plugins/jerojasro/kroki/diagram-type
+group: Text

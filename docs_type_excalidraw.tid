@@ -1,0 +1,6 @@
+title: $:/language/Docs/Types/text/x-excalidraw
+description: Excalidraw diagram
+name: text/x-excalidraw
+buttonText: Excalidraw
+tags: $:/plugins/jerojasro/kroki/diagram-type
+group: Text

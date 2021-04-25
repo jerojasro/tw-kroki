@@ -1,0 +1,6 @@
+title: $:/language/Docs/Types/text/x-bytefield
+description: Bytefield diagram
+name: text/x-bytefield
+buttonText: Bytefield
+tags: $:/plugins/jerojasro/kroki/diagram-type
+group: Text

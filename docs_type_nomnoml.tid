@@ -1,0 +1,6 @@
+title: $:/language/Docs/Types/text/x-nomnoml
+description: Nomnoml diagram
+name: text/x-nomnoml
+buttonText: Nomnoml
+tags: $:/plugins/jerojasro/kroki/diagram-type
+group: Text

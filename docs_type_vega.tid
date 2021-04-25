@@ -1,0 +1,6 @@
+title: $:/language/Docs/Types/text/x-vega
+description: Vega diagram
+name: text/x-vega
+buttonText: Vega
+tags: $:/plugins/jerojasro/kroki/diagram-type
+group: Text

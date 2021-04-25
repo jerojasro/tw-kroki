@@ -1,4 +1,10 @@
 title: $:/language/Docs/Types/text/x-plantuml
-description: PlantUML markup language
+description: PlantUML diagram
 name: text/x-plantuml
+buttonText: PlantUML
+tags: $:/plugins/jerojasro/kroki/diagram-type
+list-before: 
 group: Text
+
+@startuml
+@enduml

@@ -1,0 +1,6 @@
+title: $:/language/Docs/Types/text/x-rackdiag
+description: RackDiag diagram
+name: text/x-rackdiag
+buttonText: RackDiag
+tags: $:/plugins/jerojasro/kroki/diagram-type
+group: Text

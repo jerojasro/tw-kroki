@@ -1,0 +1,7 @@
+title: $:/language/Docs/Types/text/x-pikchr
+description: Pikchr diagram
+name: text/x-pikchr
+buttonText: Pikchr
+tags: $:/plugins/jerojasro/kroki/diagram-type
+list-after: $:/language/Docs/Types/text/x-plantuml
+group: Text

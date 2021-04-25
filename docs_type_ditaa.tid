@@ -1,0 +1,6 @@
+title: $:/language/Docs/Types/text/x-ditaa
+description: Ditaa diagram
+name: text/x-ditaa
+buttonText: Ditaa
+tags: $:/plugins/jerojasro/kroki/diagram-type
+group: Text

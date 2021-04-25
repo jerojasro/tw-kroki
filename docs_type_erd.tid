@@ -1,0 +1,6 @@
+title: $:/language/Docs/Types/text/x-erd
+description: Erd diagram
+name: text/x-erd
+buttonText: Erd
+tags: $:/plugins/jerojasro/kroki/diagram-type
+group: Text

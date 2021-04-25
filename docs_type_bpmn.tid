@@ -1,0 +1,6 @@
+title: $:/language/Docs/Types/text/x-bpmn
+description: BPMN diagram
+name: text/x-bpmn
+buttonText: BPMN
+tags: $:/plugins/jerojasro/kroki/diagram-type
+group: Text
