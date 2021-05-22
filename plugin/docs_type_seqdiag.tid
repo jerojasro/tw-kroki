@@ -1,5 +1,5 @@
 title: $:/language/Docs/Types/text/x-seqdiag
-description: SeqDiag diagram
+description: ~SeqDiag diagram
 name: text/x-seqdiag
 buttonText: SeqDiag
 tags: $:/plugins/jerojasro/kroki/diagram-type

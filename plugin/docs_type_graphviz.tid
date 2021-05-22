@@ -1,5 +1,5 @@
 title: $:/language/Docs/Types/text/x-graphviz
-description: GraphViz diagram
+description: ~GraphViz diagram
 name: text/x-graphviz
 buttonText: GraphViz
 tags: $:/plugins/jerojasro/kroki/diagram-type

@@ -1,5 +1,5 @@
 title: $:/language/Docs/Types/text/x-blockdiag
-description: BlockDiag diagram
+description: ~BlockDiag diagram
 name: text/x-blockdiag
 buttonText: BlockDiag
 tags: $:/plugins/jerojasro/kroki/diagram-type

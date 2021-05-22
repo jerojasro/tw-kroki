@@ -1,5 +1,5 @@
 title: $:/language/Docs/Types/text/x-packetdiag
-description: PacketDiag diagram
+description: ~PacketDiag diagram
 name: text/x-packetdiag
 buttonText: PacketDiag
 tags: $:/plugins/jerojasro/kroki/diagram-type

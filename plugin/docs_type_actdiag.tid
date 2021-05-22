@@ -1,5 +1,5 @@
 title: $:/language/Docs/Types/text/x-actdiag
-description: ActDiag diagram
+description: ~ActDiag diagram
 name: text/x-actdiag
 buttonText: ActDiag
 tags: $:/plugins/jerojasro/kroki/diagram-type

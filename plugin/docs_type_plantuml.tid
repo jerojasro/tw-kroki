@@ -1,5 +1,5 @@
 title: $:/language/Docs/Types/text/x-plantuml
-description: PlantUML diagram
+description: ~PlantUML diagram
 name: text/x-plantuml
 buttonText: PlantUML
 tags: $:/plugins/jerojasro/kroki/diagram-type
