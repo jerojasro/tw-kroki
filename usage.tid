@@ -1,36 +1,51 @@
-title: $:/plugins/jerojasro/kroki/usage
+title: $:/plugins/jerojasro/kroki/doc/usage
 
-! Plugin Configuration
+! Creating a diagram
 
-|!Config |!Default |!Description |
-| <code>[[breaks|$:/config/plantuml/breaks]]</code>| ``false``|Remarkable library config: Convert '\n' in paragraphs into ``<br>`` |
-| <code>[[linkify|$:/config/plantuml/linkify]]</code>| ``false``|Remarkable library config: Autoconvert URL-like text to links |
-| <code>[[linkNewWindow|$:/config/plantuml/linkNewWindow]]</code>| ``true``|For external links, should clicking on them open a new window/tab automatically? |
-| <code>[[quotes|$:/config/plantuml/quotes]]</code>| ``“”‘’``|Remarkable library config: Double + single quotes replacement pairs, when ``typographer`` enabled |
-| <code>[[renderWikiText|$:/config/plantuml/renderWikiText]]</code>| ``true``|After Markdown is parsed, should any text elements be handed off to the ~WikiText parser for further processing? |
-| <code>[[renderWikiTextPragma|$:/config/plantuml/renderWikiTextPragma]]</code>| ``\rules only html image macrocallinline syslink transcludeinline wikilink filteredtranscludeblock macrocallblock transcludeblock``|When handing off to the ~WikiText parser, what pragma rules should it follow? |
-| <code>[[typographer|$:/config/plantuml/typographer]]</code>| ``false``|Remarkable library config: Enable some language-neutral replacement + quotes beautification |
+Just click on the "Create new diagram" button
+({{$:/plugins/jerojasro/kroki/new-kroki-button}}) that was added to the
+Page Controls of your ~TiddlyWiki, and select the kind of diagram you want;
+that will create a new tiddler, where you can enter the text for your diagram.
 
-! Creating ~WikiLinks
+! How the plugin integrates with ~TiddlyWiki
 
-Create wiki links with the usual Markdown link syntax targeting `#` and the target tiddler title:
+The plugin takes care of getting the diagram rendered as SVG ---by contacting
+the Kroki web service and sending it the diagram text, to get SVG back from
+it---, storing (caching) that SVG image in your ~TiddlyWiki, and arranging
+everything so ~TiddlyWiki shows you the SVG image for the diagram when rendering
+the tiddler, and allowing you edit its original diagram text, when editing the
+tiddler.
 
-```
-[link text](#TiddlerTitle)
-```
+Whenever you change the diagram text, the plugin will take care of updating the
+SVG, too, when saving the tiddler. This also works when the "tiddler preview"
+mode for editing tiddlers
+({{$:/core/images/preview-closed}}/{{$:/core/images/preview-open}}) is enabled.
 
-If the target tiddler has a space in its name, that name must be URL-escaped to be detected as a URL:
+The plugin can differentiate regular tiddlers from diagram tiddlers by looking
+at the tiddler's `type` field; as long as the value for that field is one of the
+[[tiddler content types reserved by the plugin for diagrams|$:/plugins/jerojasro/kroki/doc/diagram-types]],
+it will be processed as a diagram tiddler; this means that you can also create
+diagram tiddlers with any of the mechanisms ~TiddlyWiki supports for doing so,
+and as long as you use the proper `type` field, it will be processed as a
+diagram.
 
-```
-[link text](#Test%20Tiddler)
-```
+You can use the diagram tiddlers just like you would any other tiddler, so you
+can tag them, transclude them, etc.
 
-! Images
+! Using a different Kroki instance
 
-Markdown image syntax can be used to reference images by tiddler title or an external URI. For example:
+By default, the plugin uses the Kroki instance available at https://kroki.io for
+rendering diagrams. In general, this is convenient as it doesn't require any
+additional setup, but https://kroki.io is of course a public service on the
+Internet, and should only be used for diagrams which you don't mind making
+public/being seen by somebody else.
 
-```
-![alt text](/path/to/img.jpg "Title")
-
-![alt text](Motovun Jack.jpg "Title")
-```
+If you prefer not to send the text of your diagram to a
+public service on the Internet ---perhaps it's propietary information, or you
+just prefer using a server closer to you to get quicker feedback--- you can
+change the server used for rendering the diagrams to SVG; since Kroki
+[[can be deployed|https://docs.kroki.io/kroki/setup/install/]]
+as a local service in a computer of your choosing, you can just set up a Kroki
+instance somewhere suitable for you, and then configure this plugin so it uses
+''that'' Kroki instance instead of the public one, by adjusting the URL
+parameter this plugin uses, at [[$:/plugins/jerojasro/kroki/config]].

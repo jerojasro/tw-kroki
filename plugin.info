@@ -1,8 +1,8 @@
 {
 	"title": "$:/plugins/jerojasro/kroki",
 	"name": "Kroki",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"core-version": ">=5.1.22",
-	"list": "readme config",
+	"list": "readme config doc/usage doc/license",
 	"description": "Allows adding any diagram supported by Kroki, and keeps a cached, up-to-date SVG copy of the diagram inside TiddlyWiki"
 }

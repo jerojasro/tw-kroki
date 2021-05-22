@@ -1,0 +1,12 @@
+title: $:/plugins/jerojasro/kroki/doc/diagram-types
+
+! Available Kroki diagram types
+
+<table>
+<tr><th>Content Type</th><th>Name</th></tr>
+<$list filter="[all[shadows]tag[$:/plugins/jerojasro/kroki/diagram-type]]">
+<tr> 
+<td><code> {{!!name}}</code> </td><td> {{!!description}} </td>
+</tr>
+</$list>
+</table>
