@@ -1,0 +1,13 @@
+This is a TiddlyWiki plugin that integrates the Kroki diagram web service into
+TiddlyWiki, allowing you to create diagrams as regular tiddlers in suitable formats
+such as graphviz (https://graphviz.org/) or
+ plantuml (https://plantuml.com/), and have them rendered as SVG images in your
+TiddlyWiki.
+
+While the plugin requires access to a Kroki instance for *creating* and
+*editing* diagrams, it doesn't require that for *showing* the diagrams; this
+is because the plugin takes care of storing the SVG data in each diagram
+tiddler. From TiddlyWiki's point of view, they are just SVG images and
+therefore, for visualizing the contents of your TiddlyWiki, you can rest assured
+that everything in it is self contained, without relying on external files or
+services.
