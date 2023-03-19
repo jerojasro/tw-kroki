@@ -53,20 +53,51 @@ KrokiWidget.prototype = new Widget();
 
 
 KrokiWidget.prototype.updateDiagram = function(currTiddler, prevDiagText) {
-	var server_url=$tw.wiki.getTiddler("$:/plugins/jerojasro/kroki/config/kroki_server_url").fields.text;
+	var server_url = $tw.wiki.getTiddler("$:/plugins/jerojasro/kroki/config/kroki_server_url").fields.text;
+	var request_url = server_url + contentTypes[currTiddler.fields.type];
 
-	fetch(server_url + contentTypes[currTiddler.fields.type], {
-		"method": "POST",
-		"body": currTiddler.fields.text,
-	})
-	.then(function (response){return response.text()})
-	.then(function(responseText) {
+	var request = new XMLHttpRequest();
+
+	request.open("POST", request_url, true);
+	request.setRequestHeader('Content-Type', 'text/plain');
+	request.timeout = 5000;  // ms
+
+	var set_tiddler_text = function(text) {
 		var newTiddler = new $tw.Tiddler(
 			$tw.wiki.getTiddler(currTiddler.fields.title),
-			{_prev_diag_text: prevDiagText, needs_update: null, cached_svg: responseText}
+			{_prev_diag_text: prevDiagText, needs_update: null, cached_svg: text}
 		);
 		$tw.wiki.addTiddler(newTiddler);
-	});
+	}
+
+	request.ontimeout = function(e) {  // WTF is e?
+		console.log(this);
+		console.log(e);
+		set_tiddler_text("there was a timeout");
+	};
+
+	request.onerror = function() {
+		console.log(this);
+		if (this.status == 0) {
+			// connection error
+			set_tiddler_text("Could not perform request to " + request_url + "; check that you can access " + server_url);
+			return;
+		}
+
+		// regular HTTP error
+		set_tiddler_text("Error while rendering the diagram; request to " + request_url + "returned HTTP code " + this.status);
+	};
+
+	request.onload = function() {
+		var newTiddler = new $tw.Tiddler(
+			$tw.wiki.getTiddler(currTiddler.fields.title),
+			{_prev_diag_text: prevDiagText, needs_update: null, cached_svg: this.responseText}
+		);
+		$tw.wiki.addTiddler(newTiddler);
+	};
+
+
+	request.send(currTiddler.fields.text);
 }
 
 /*
